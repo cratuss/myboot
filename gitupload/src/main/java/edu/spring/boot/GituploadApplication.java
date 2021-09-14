@@ -8,7 +8,7 @@ public class GituploadApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GituploadApplication.class, args);
-		System.out.println("접속 완료");
+		System.out.println("수정합니다.");
 	}
 
 }
