@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="web" >
+	<select id="userSelectAll" resultType="boardVO">
+		select * from iuser
+	</select>
+	<select id="userSelectOne" resultType="userVO" parameterType="userVO" >
+		select * from iuser where iuser_id = #{iuser_id} and iuser_pw = #{iuser_pw}
+	</select>
+	<insert id="userInsert" parameterType="userVO">
+		insert into iuser values(#{iuser_id}, #{iuser_pw}, #{iuser_name})
+	</insert>
+	<select id="boardSelectAll" resultType="boardVO">
+		select * from iboard
+	</select>
+	<select id="boardSelectType" resultType="boardVO" parameterType="String">
+		select * from iboard where iboard_type = #{id}
+	</select>
+	<select id="boardSelectOne" resultType="boardVO" parameterType="int" >
+		select * from iboard where iboard_id = #{id}
+	</select>
+	<insert id="boardInsert" parameterType="boardVO">
+		insert into iboard values(iboard_id_seq.nextval, #{iboard_iuser_id}, #{iboard_type}, #{iboard_title}, 
+		#{iboard_contents}, sysdate, #{iboard_iuser_name})
+	</insert>
+	<delete id="boardDelete" parameterType="int">
+		delete iboard where iboard_id = #{id}
+	</delete>
+	<select id="commentSelect" resultType="commentVO" parameterType="int" >
+		select * from comments where comments_iboard_id = #{id}
+	</select>
+	<insert id="commentInsert" parameterType="commentVO">
+		insert into comments values(comments_id_seq.nextval, #{comments_iuser_id}, #{comments_contents}, sysdate, #{comments_iboard_id}
+		, #{comments_iuser_name})		
+	</insert>
+	<delete id="commentDelete" parameterType="int">
+		delete comments where comments_id = #{id}
+	</delete>
+</mapper>
