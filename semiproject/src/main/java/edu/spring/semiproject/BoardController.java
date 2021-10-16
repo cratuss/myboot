@@ -25,6 +25,7 @@ public class BoardController {
 	@RequestMapping("/boardmain")
 	public ModelAndView main() {
 		System.out.println("");
+		System.out.println("");
 		List<BoardVO> list = service.boardSelectAll();
 		
 		ModelAndView mv = new ModelAndView();
