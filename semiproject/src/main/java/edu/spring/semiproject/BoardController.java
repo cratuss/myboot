@@ -26,6 +26,7 @@ public class BoardController {
 	public ModelAndView main() {
 		System.out.println("");
 		System.out.println("");
+		System.out.println("");
 		List<BoardVO> list = service.boardSelectAll();
 		
 		ModelAndView mv = new ModelAndView();
